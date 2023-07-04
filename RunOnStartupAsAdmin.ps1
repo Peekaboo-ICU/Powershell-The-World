@@ -10,4 +10,4 @@ $trigger = New-ScheduledTaskTrigger -AtStartup
 $principal = New-ScheduledTaskPrincipal -UserId "NT AUTHORITY\SYSTEM" -LogonType ServiceAccount -RunLevel Highest
 
 # Register the scheduled task
-Register-ScheduledTask -TaskName "Run Xmrig" -Action $action -Trigger $trigger -Principal $principal -RunLevel Highest -Force
+Register-ScheduledTask -TaskName "Run Xmrig" -Action $action -Trigger $trigger -Principal $principal -Force
