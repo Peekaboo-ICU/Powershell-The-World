@@ -7,9 +7,7 @@ $action = New-ScheduledTaskAction -Execute $xmrigPath
 $trigger = New-ScheduledTaskTrigger -AtStartup
 
 # Create a principal for the task to run with the highest privileges
-$principal = New-ScheduledTaskPrincipal -UserId "NT AUTHORITY\SYSTEM" -LogonType ServiceAccount -RunLevel HighestAvailable
+$principal = New-ScheduledTaskPrincipal -UserId "NT AUTHORITY\SYSTEM" -LogonType ServiceAccount -RunLevel Highest
 
 # Register the scheduled task
 Register-ScheduledTask -TaskName "Run Xmrig" -Action $action -Trigger $trigger -Principal $principal -RunLevel Highest -Force
-
-
