@@ -5,6 +5,11 @@ $shell = New-Object -ComObject WScript.Shell
 $shortcut = $shell.CreateShortcut($shortcutPath)
 $shortcut.TargetPath = $scriptPath
 $shortcut.Save()
-# Elevate the shortcut to run as administrator
-$shortcut.Properties("RunAsAdministrator").Value = 1
+
+# Get the shortcut object using the Windows Script Host Shell object
+$shortcut = $shell.CreateShortcut($shortcutPath)
+
+# Update the shortcut properties to run as administrator
+$shortcut.WindowStyle = 1
 $shortcut.Save()
+
